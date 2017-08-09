@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Studio Ghibli</string>
+    <string name="error_dialog_title">Oop! Sorry!</string>
+    <string name="error_message">There was an error, please try again.</string>
+    <string name="error_ok_button_text">OK</string>
+    <string name="network_error_title">Network Error</string>
+    <string name="network_error_message">Network unavailable</string>
+    <string name="header_text">MOVIE</string>
+    <string name="title_label_text">Title</string>
+    <string name="producer_label_text">Producer</string>
+    <string name="director_label_text">Director</string>
+    <string name="year_label_text">Year</string>
+    <string name="rating_label_text">Rating</string>
+    <string name="button_content_description">Button shows movie description when clicked</string>
+    <string name="button_text">Show Synopsis</string>
+    <string name="synopsis_textView_description">shows movie synopsis</string>
+    <string name="key">Movie Synopsis</string>
+
+</resources>

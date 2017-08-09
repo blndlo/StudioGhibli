@@ -1,4 +1,4 @@
-package com.bitland.studioghibli;
+package com.bitland.studioghibli.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bitland.studioghibli.R;
+import com.bitland.studioghibli.movie.Movie;
+import com.bitland.studioghibli.movie.MovieList;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +24,7 @@ import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -31,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Movie mMovie;
     private String description;
+    private MovieList mMovieList;
 
     @BindView(R.id.headerLabel)TextView mHeaderLabel;
     @BindView(R.id.titleLabel)TextView mTitleLabel;
@@ -167,7 +174,46 @@ public class MainActivity extends AppCompatActivity {
         theMovie.setYearOfRelease(releaseDate);
         theMovie.setRatings(rating);
 
-
         return theMovie;
+    }
+
+    @OnClick(R.id.showMovieListButton)
+    public void showMovieList(){
+        String movieListUrl = "https://ghibliapi.herokuapp.com/films";
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(movieListUrl)
+                .build();
+
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    if(response.isSuccessful()){
+                        mMovieList = getMovieList(jsonData);
+                    }
+                } catch (IOException e){
+                    Log.e(TAG, "Exception caught: ", e);
+                } catch (JSONException e) {
+                    Log.e(TAG, "Exception caught: ", e);
+                }
+
+
+            }
+        });
+    }
+
+    private MovieList getMovieList(String jsonData) throws JSONException {
+        JSONArray movies = new JSONArray(jsonData);
+
+        return new MovieList();
     }
 }

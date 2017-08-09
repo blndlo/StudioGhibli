@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFC970B"
-    tools:context="com.bitland.studioghibli.SynopsisActivity">
+    tools:context="com.bitland.studioghibli.ui.SynopsisActivity">
 
     <ScrollView
         android:layout_width="368dp"

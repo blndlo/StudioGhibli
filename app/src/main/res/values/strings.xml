@@ -12,8 +12,11 @@
     <string name="year_label_text">Year</string>
     <string name="rating_label_text">Rating</string>
     <string name="button_content_description">Button shows movie description when clicked</string>
-    <string name="button_text">Show Synopsis</string>
+    <string name="button_text">Synopsis</string>
     <string name="synopsis_textView_description">shows movie synopsis</string>
     <string name="key">Movie Synopsis</string>
+    <string name="show_movie_list_button_text">Movie List</string>
+    <string name="movie_list_button_description">Button to show movie list</string>
+    <string name="show_synopsis_button_description">Button to show the synopsis of the displayed movie</string>
 
 </resources>
